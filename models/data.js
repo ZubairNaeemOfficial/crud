@@ -19,6 +19,10 @@ const todoSchema=new mongoose.Schema({
     testing1:{
         data1:Number,
         data2:Number,
+        innerdata:{
+            inner:Number,
+            innerdata:String
+        },
      },
      testing2:{
         data1:Number,
