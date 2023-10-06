@@ -8,7 +8,22 @@ const todoSchema=new mongoose.Schema({
     testing:{
        data1:Number,
        data2:String,
+       data3:Number,
+       data4:String,
+       data5:Number,
+       data6:String,
+       data7:Number,
+       data8:String,
+       
     },
+    testing1:{
+        data1:Number,
+        data2:Number,
+     },
+     testing2:{
+        data1:Number,
+        data2:String,
+     }
    
     
 })

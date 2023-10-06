@@ -2,10 +2,12 @@ const Testing =require('../models/data')
 
 const Datatesting= async (req, res) => {
   try {
-    const { name, testing } = req.body;
+    const { name, testing,testing1,testing2 } = req.body;
     const newData = new Testing({
       name: name,
-      testing: testing
+      testing: testing,
+      testing1:testing1,
+      testing2:testing2
     });
 console.log(newData,"data")
     await newData.save();
