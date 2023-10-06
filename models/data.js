@@ -6,7 +6,7 @@ const todoSchema=new mongoose.Schema({
         required:true
     },
     testing:{
-       data1:String,
+       data1:Number,
        data2:String,
     },
    
