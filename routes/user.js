@@ -1,13 +1,12 @@
 const express=require("express");
 const router=express.Router();
-const userController=require('../controllers/user')
+const userController=require('../controllers/user');
+const authenticateWithToken = require("../middleware/usermiddleware");
 
-
-// creating routes user controllers  
 
 router.post("/createuser", userController.createdata)
-router.get("/getAllData", userController.getAlldata )
-router.get("/getById/:id", userController.getById)
+router.get("/getAllData",authenticateWithToken ,userController.getAlldata )
+router.get("/getById/:id",authenticateWithToken ,userController.getById)
 router.delete("/userdelete/:id", userController.deleteById)
 router.put("/userupdate/:id", userController.updatingById)
 
