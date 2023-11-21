@@ -21,7 +21,7 @@ const Loginuser=async(req, res)=>{
         const {email, password}=req.body;
         const user=await Logintest.findOne({email});
         if(user && await bcrypt.compare(password,user.password)){
-            const token =jwt.sign({userId:user.id, email:user.email}, process.env.PRIVATE_KEY, {expiresIn:"1hr"})
+            const token =jwt.sign({userId:user.id, role:user.role}, process.env.PRIVATE_KEY, {expiresIn:"1hr"})
        res.status(200).json({token})
         }else{
             res.status(401).json({error:"invalid credentional"})

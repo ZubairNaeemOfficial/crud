@@ -5,8 +5,8 @@ const authenticateWithToken = require("../middleware/usermiddleware");
 
 
 router.post("/createuser", userController.createdata)
-router.get("/getAllData",authenticateWithToken ,userController.getAlldata )
-router.get("/getById/:id",authenticateWithToken ,userController.getById)
+router.get("/getAllData"  ,userController.getAlldata )
+router.get("/getById/:id" ,userController.getById)
 router.delete("/userdelete/:id", userController.deleteById)
 router.put("/userupdate/:id", userController.updatingById)
 
