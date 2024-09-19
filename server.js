@@ -1,23 +1,32 @@
-const express=require('express')
-const dotenv=require('dotenv')
-const bodyParser=require("body-parser")
-const app = express();
-const userRoutes=require('./routes/user')
-const userRoutes1=require('./routes/data')
-const loginSystem=require('./routes/loginsystem')
-const cors=require('cors')
-const mongoose=require('./config/connection');
 
+import express from "express";
+import bodyparser from "body-parser"
+import cors from "cors"
+import dotenv from "dotenv"
+import { connectionDB } from "./config/connection.js";
+import userRouter from "./routes/user.js"
+import cookieParser from "cookie-parser";
 dotenv.config()
-app.use(cors())
-let port= process.env.PORT || 8080;
 
-app.use(bodyParser.json())
-app.use(express.static("Public"));
-app.use('/', userRoutes)
-app.use('/check', userRoutes1)
-app.use('/loginsystem', loginSystem)
-app.listen(port, "localhost" ,(req, res)=>{
-    console.log(`server starting at : http://localhost:${port}`)
+const app = express()
+//for connection
+app.use(cors())
+//for json data 
+app.use(express.json());
+// body parser for taking data from document or body
+
+app.use(bodyparser.urlencoded({ extended: true }));
+app.use(bodyparser.json())
+// cookie parser
+
+app.use(cookieParser())
+
+app.use("/",userRouter)
+connectionDB()
+const port=process.env.PORT || 5000
+app.listen(port,()=>{
+    console.log("server created")
 })
+
+
 

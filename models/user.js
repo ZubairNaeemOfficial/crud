@@ -1,4 +1,4 @@
-const mongoose=require('mongoose')
+import mongoose from "mongoose"
 
 const todoSchema=new mongoose.Schema({
     name:{
@@ -13,8 +13,16 @@ const todoSchema=new mongoose.Schema({
         type:String,
         required:true
     },
-    
+    //role based user field
+    role:{
+        type:String,
+        enum:["admin", "customer","superAdmin"],
+        default:"customer",
+    }
 })
 
-const Todo=mongoose.model("User",todoSchema)
-module.exports=Todo;
+const user=mongoose.model("User",todoSchema)
+export default user;
+
+
+

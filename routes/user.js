@@ -1,14 +1,10 @@
-const express=require("express");
+import express from "express"
 const router=express.Router();
-const userController=require('../controllers/user');
-const authenticateWithToken = require("../middleware/usermiddleware");
+import {loginUser, logoutUser, registerUser} from "../controllers/user.js"
+
+router.post("/registerUser", registerUser)
+router.post("/loginUser", loginUser)
+router.post("/logout", logoutUser)
 
 
-router.post("/createuser", userController.createdata)
-router.get("/getAllData"  ,userController.getAlldata )
-router.get("/getById/:id" ,userController.getById)
-router.delete("/userdelete/:id", userController.deleteById)
-router.put("/userupdate/:id", userController.updatingById)
-
-
-module.exports=router;
+export default router;
